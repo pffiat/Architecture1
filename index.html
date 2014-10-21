@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Architecture 1.0</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+
+    <!--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+    <section>
+        <h1>Architecture 1.0</h1>
+        <br>
+        <img src="images/ebusiness.png">
+        <br><br>
+        <h6>Alexandre Nunesse | Christophe Deverre</h6>
+        <br>
+        <p style="text-align:center">EPF - 2014</p>
+    </section>
+
+    <section>
+        <h1>Architecture 1.0</h1>
+        <br>
+        <img height="400" width="400" src="http://blog-dev.net/wp-content/uploads/2011/06/logo-maven.png">
+        <img height="400" width="400" src="http://www.seedworkshops.com/379-434-thickbox/spring-framework-3-training-in-mumbai.jpg">
+    </section>
+</section>
+
+<section>
+    <section>
+        <h1>Maven</h1>
+        <img height="400" width="400" src="http://blog-dev.net/wp-content/uploads/2011/06/logo-maven.png">
+    </section>
+
+    <section>
+        <h2>Introduction</h2>
+        <br>
+        <ul>
+            <li><p>Maven est un outil indispensable dans la gestion de gros projets, il s'appui sur Apache ANT en normalisant son utilisation.</p></li><br>
+            <li><p>Maven s'utilise avec un fichier pom.xml (Project Object Model).</p></li><br>
+            <li><p>Alternatives à Maven : ANT, Gradle ou Raven</p></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Introduction</h2>
+        <br>
+        <p>Maven peut rendre plusieurs services :</p>
+        <br>
+        <ul>
+            <li>Build et déploiement du projet</li>
+            <li>Gestion des dépendances</li>
+            <li>Test</li>
+            <li>Versionning</li>
+            <li>Génération de documentations</li>
+            <li>Modularisation</li>
+            <li>...</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Utilisation</h2>
+        <a href="http://maven.apache.org/">Apache Maven : http://maven.apache.org/</a>
+        <br>
+        <pre>mvn -v</pre>
+        <pre>
+            Maven home: /home/alexandre/Java_Dev/apache-maven-3.1.1
+            Java version: 1.7.0_51, vendor: Oracle Corporation
+            Java home: /opt/jdk1.7.0_51/jre
+            Default locale: en_US, platform encoding: UTF-8
+        </pre>
+        <br>
+        <p>Remarque : Maven doit être présent dans votre Path pour utiliser la commande mvn.</p>
+        
+    </section>
+
+    <section>
+        <h2>Structure de projet</h2>
+        <br>
+        <div style="margin-left:30%; margin-right:auto;text-align:left;">
+        <i style="font-family: 'FontAwesome'; font-style: normal;" class="fa fa-folder"></i> src
+            <br>&emsp;&emsp;<i style="font-family: 'FontAwesome';font-style: normal;" class="fa fa-folder"></i> main
+                <br>&emsp;&emsp;&emsp;&emsp;<i style="font-family: 'FontAwesome'; font-style: normal;" class="fa fa-folder"></i> java
+                <br>&emsp;&emsp;&emsp;&emsp;<i style="font-family: 'FontAwesome'; font-style: normal;" class="fa fa-folder"></i> resources
+                <br>&emsp;&emsp;&emsp;&emsp;<i style="font-family: 'FontAwesome'; font-style: normal;" class="fa fa-folder"></i> webapp
+                    <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i style="font-family: 'FontAwesome'; font-style: normal;" class="fa fa-folder"></i> WEB-INF
+                    <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i style="font-family: 'FontAwesome'; font-style: normal;" class="fa fa-file"></i> web.xml
+            <br>&emsp;&emsp;<i style="font-family: 'FontAwesome';font-style: normal;" class="fa fa-folder"></i> test
+        <br><i style="font-family: 'FontAwesome'; font-style: normal;" class="fa fa-file"></i> pom.xml
+        </div>
+        <!--<img src="http://a5e2fba00d8bcb729d89839f.javacodegeeks.netdna-cdn.com/wp-content/uploads/2013/11/eclipse_project_WM.png">-->
+    </section>
+
+    <section>
+        <h2>Construction du projet</h2>
+        <br>
+        <h4>Commandes principales: </h4>
+        <ul>
+            <li>mvn compile : compile les sources</li>
+            <li>mvn test : exécute les tests unitaires</li>
+            <li>mvn install : déploie l'archive de l'application (war)</li>
+            <li>mvn clean : nettoie le répertoire target</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Modularisation du projet</h2>
+        <br>
+        <img src="images/modularisation.png">
+    </section>
+
+    <section>
+        <h2>Remarques</h2>
+        <br>
+        <ul>
+            <li>Maven est un outil performant pour modulariser un projet</li>
+            <li>Maven permet d'utiliser divers types de plugins pour réaliser des tâches complexes et fastidieuses</li>
+            <li>La pluspart des IDE intègrent des outils pour gérer des projets Maven</li>
+            <li>Il est possible de publier ses propres librairies pour les rendre accessibles depuis les repositories centraux</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Repository</h2>
+        <br>
+        <img src="http://download.java.net/general/jn_images/009/nexus-architecture.png">
+    </section>
+
+    <section>
+        <h2>Project Object Model</h2>
+        <br>
+        <a href="pom.xml" target="_blank">Exemple</a>
+    </section>
+
+    <section>
+        <h2>Notion de Scope</h2>
+        <ul style="font-size:65%">
+            <li><h4>compile : </h4>Sélectionné par défaut, la dépendance sont ajoutées au classpath du projet.</li>
+            <li><h4>provided : </h4>La dépendance est fournie par un autre container comme le JDK ou le serveur d'application.</li>
+            <li><h4>runtime : </h4>La dépendance n'est pas nécessaire à la compilation mais uniquement au runtime. Exemple : jstl.</li>
+            <li><h4>test : </h4>La dépendace est requise uniquement pour les tests.</li>
+            <li><h4>system : </h4>Equivalent à provided en fournissant soi-même le jar.</li>
+            <li><h4>import : </h4>Utilisé pour une dépendance d'un module parent pour importer les dépendances d'un autre module.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>LiveCoding</h1>
+        <br>
+        <p>Intégration de Maven</p>
+    </section>
+
+</section>
+
+<!-- Example of nested vertical slides -->
+<section>
+    <section>
+        <h1>Spring</h1>
+        <img height="400" width="400" src="http://www.seedworkshops.com/379-434-thickbox/spring-framework-3-training-in-mumbai.jpg">
+    </section>
+
+    <section>
+        <h2>Qu'est ce que J2E?</h2>
+        <br>
+        <p class="fragment">Un ensemble d'interfaces normalisants le fonctionnements d'un serveur d'application (JSR). Plusieurs implémentations existent sur des serveurs comme GlassFish ou Wildfly (pour JEE 7).</p>
+        <ul class="fragment">
+        	<li>Servlet/JSP/JSF/JSTL</li>
+        	<li>EJB</li>
+        	<li>JNDI</li>
+        	<li>JDBC</li>
+        	<li>JMS</li>
+        	...
+        	<li>JPA</li>
+        	<li>JTA</li>
+        </ul>
+    </section>
+
+    <section>
+    	<h2>JEE vs Spring</h2>
+    	<br>
+        <p>JEE peut être une solution lourde à implémenter, nous allons donc voir une alternative à JEE : Spring.</p> 
+    </section>
+
+	<section>
+        <h2>Spring</h2>
+        <br>
+        <ul>
+        	<li>Un conteneur lèger</li><br>
+        	<li>Le management du cycle de vie des objets</li><br>
+        	<li>L'injection de dépendances</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Le contexte Spring</h2>
+        <br>
+        <p>Spring s'appuie sur un <i>contexte</i> qui va contenir des objets instanciés par Spring.</p>
+        <p></p>
+    </section>
+
+    <section data-markdown style="font-size: 90%">
+    <script type="text/template">
+        ## Création de Bean Spring
+#### Pour créer des objets managés par Spring 2 possibilitées
+* A l'ancienne dans la configuration xml du contexte : 
+    ```xml
+    <bean id="message" class="org.my.sample.Message">
+    	<property name="message" value="Spring is fun." />
+    </bean>
+    ```
+* Avec des annotations et en laissant Spring scanner nos classes :
+    ```java
+    @Component
+    public class MyService{
+    	...
+    }
+    ```
+    </script>
+    </section>
+
+    <section data-markdown style="font-size: 90%">
+    <script type="text/template">
+    ## IOC & Injection de dépendances
+    ```java
+    public class MyController{
+
+    	@Autowired
+    	MyService myService;
+
+    }
+    ```
+    </script>
+    </section>
+
+   <section>
+        <h2>Spring tout seul... C'est nul</h2>        
+    </section>
+
+    <section>
+        <h2>Principaux modules de Spring</h2>
+        <br>
+        <ul>
+        	<li>Spring-Web</li><br>
+        	<li>Spring-Web-MVC</li><br>
+        	<li>Spring-Data-JPA</li><br>
+        	<li>Spring-Transaction</li>
+        </ul>
+
+    </section>
+
+   <section>
+        <h2>Spring web & Spring web MVC</h2>
+        <br>
+        <p>Spring-Web fournit principalement une couche d'abstraction au-dessus du language Http (<strong>HttpRequestHandler</strong>) et un contexte supplémentaire pour la web application.</p>
+        <br>
+        <p>Spring-Web-MVC fournit une servlet de haut niveau permettant de manager les autres servlets : c'est la <strong>DispatcherServlet</strong></p>
+    </section>
+
+
+    <section>
+        <h1>LIVECODING</h1>
+        <br>
+        <p>Intégration de Spring</p>
+
+    </section>
+
+    <section>
+        <h1>Pour aller plus loin</h1>
+        <br>
+        <p>Intégration de SpringData JPA</p>
+
+    </section>
+
+</section>
+
+
+<section>
+    <h1>Merci de votre attention!</h1>
+    <br>
+    <p>Des questions?</p><br>
+    <i style="font-family: 'FontAwesome'; font-style: normal; font-size:80px;" class="fa fa-arrow-down"></i>
+    <br><br>
+    <p>anunesse@excilys.com | cdeverre@excilys.com</p><br>
+    <a href="http://www.ebusinessinformation.fr/">eBusiness Information</a>
+
+</section>
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            } },
+            { src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } }
+        ]
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+    "name": "Guarantee",
+    "fields": [
+        {
+            "fieldName": "label",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "spectrum",
+            "otherEntityName": "spectrum",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "guaranteeDetail",
+            "otherEntityName": "guaranteeDetail",
+            "otherEntityRelationshipName": "guarantee"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "guaranteeLevel",
+            "otherEntityName": "guaranteeLevel",
+            "otherEntityRelationshipName": "guarantee"
+        }
+    ],
+    "changelogDate": "20181202232818",
+    "entityTableName": "guarantee",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "assur"
+    ]
+}

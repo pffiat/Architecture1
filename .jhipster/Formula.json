@@ -1,0 +1,42 @@
+{
+    "name": "Formula",
+    "fields": [
+        {
+            "fieldName": "label",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "allowance",
+            "otherEntityName": "allowance",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "formula",
+            "relationshipName": "guaranteeLevel",
+            "otherEntityName": "guaranteeLevel",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "guaranteeLevel",
+            "otherEntityName": "guaranteeLevel",
+            "otherEntityRelationshipName": "formula"
+        }
+    ],
+    "changelogDate": "20181202232814",
+    "entityTableName": "formula",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "assur"
+    ]
+}

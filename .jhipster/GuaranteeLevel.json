@@ -1,0 +1,47 @@
+{
+    "name": "GuaranteeLevel",
+    "fields": [
+        {
+            "fieldName": "label",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "formula",
+            "otherEntityName": "formula",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "guarantee",
+            "otherEntityName": "guarantee",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "guaranteeLevelDetail",
+            "otherEntityName": "guaranteeLevelDetail",
+            "otherEntityRelationshipName": "guaranteeLevel"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "formula",
+            "otherEntityName": "formula",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "guaranteeLevel"
+        }
+    ],
+    "changelogDate": "20181202234106",
+    "entityTableName": "guarantee_level",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "assur"
+    ]
+}

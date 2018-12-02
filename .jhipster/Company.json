@@ -1,0 +1,39 @@
+{
+    "name": "Company",
+    "fields": [
+        {
+            "fieldName": "label",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "siret",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contract",
+            "otherEntityName": "contract",
+            "otherEntityRelationshipName": "company"
+        }
+    ],
+    "changelogDate": "20181202234102",
+    "entityTableName": "company",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "assur"
+    ]
+}

@@ -1,0 +1,60 @@
+application {
+  config {
+    baseName assur
+    applicationType monolith
+    prodDatabaseType mysql
+    buildTool maven
+    clientFramework react
+  }
+  entities 
+}
+
+entity Company {
+	label String required
+    address String
+    siret Long
+}
+entity Contract {
+	label String
+}
+entity Allowance {
+	label String
+}
+entity Formula {
+	label String
+}
+entity GuaranteeLevel {
+	label String
+}
+entity GuaranteeLevelDetail {
+	label String
+}
+
+entity Range {
+	label String
+}
+entity Guarantee {
+	label String
+}
+entity GuaranteeDetail {
+	label String
+}
+
+relationship ManyToOne {
+	Contract to Company
+    Formula to Allowance
+    GuaranteeLevel to Formula
+    GuaranteeLevelDetail to GuaranteeLevel
+    Guarantee to Range
+    GuaranteeDetail to Guarantee
+    GuaranteeLevel to Guarantee
+}
+
+relationship OneToMany {
+	Allowance to Contract
+    GuaranteeDetail to GuaranteeLevelDetail
+}
+
+relationship ManyToMany {
+	Formula to GuaranteeLevel
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Spectrum",
+    "fields": [
+        {
+            "fieldName": "label",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "guarantee",
+            "otherEntityName": "guarantee",
+            "otherEntityRelationshipName": "spectrum"
+        }
+    ],
+    "changelogDate": "20181202234108",
+    "entityTableName": "spectrum",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "assur"
+    ]
+}
